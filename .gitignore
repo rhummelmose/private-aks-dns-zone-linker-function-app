@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+.nvmrc
+package-lock.json
+local.settings.json

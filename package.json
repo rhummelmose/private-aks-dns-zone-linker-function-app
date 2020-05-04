@@ -1,0 +1,20 @@
+{
+  "name": "private-aks-dns-zone-linker-function",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "src/main.ts",
+  "module": "src/main.ts",
+  "dependencies": {
+    "@azure/arm-privatedns": "^1.0.0",
+    "@azure/ms-rest-nodeauth": "^3.0.3",
+    "@azure/functions": "^1.2.0",
+    "atob": "^2.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2",
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
