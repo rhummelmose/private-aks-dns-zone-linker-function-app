@@ -22,6 +22,8 @@ If you can answer *yes* to the above, and BYO DNS still isn't available for AKS 
 1. Enable system managed identity on the function app
 1. Grant *Network Contributor* and *DNS Contributor* roles to the function app's identity
 1. On the function app, add a new application configuration variable: *PRIVATE_AKS_DNS_ZONE_LINKER_AUTHENTICATION_TYPE* with value *APP_SERVICE_MSI*
+1. base64 encode a JSON array of your hub vnet resource ids. Ie. *echo -n '["id1", "id2"]'*
+1. On the function app, add a new application configuration variable: *PRIVATE_AKS_DNS_ZONE_LINKER_TARGET_VNETS* with a value derived from the previous bullet.
 1. Run command *tsc* to compile the function app - requires TypeScript (https://www.typescriptlang.org/#download-links)
 1. Run command *func azure functionapp publish <your-app-name>* to publish the function - requires azure-functions-core-tools (https://github.com/Azure/azure-functions-core-tools)
 1. Subscribe the function to events of type *ResourceWriteSuccess* on the subscriptions relevant
