@@ -27,7 +27,7 @@ interface ResourceIdProps {
 }
 
 const run: AzureFunction = async function (context: Context, event: Object): Promise<void> {
-context.log(`Event grid trigger function processed an event: ${Util.inspect(event, {showHidden: false, depth: null})}`);
+    context.log(`Event grid trigger function processed an event: ${Util.inspect(event, {showHidden: false, depth: null})}`);
     const providerIdentitier = "providers/Microsoft.Network/privateDnsZones";
     const aksIdentifier = "azmk8s.io"
     const resourceId: string = event["subject"];
