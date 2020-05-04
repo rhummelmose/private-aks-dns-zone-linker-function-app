@@ -1,5 +1,6 @@
 node_modules/
 dist/
+.vscode/
 .DS_Store
 .nvmrc
 package-lock.json
