@@ -28,10 +28,11 @@ interface ResourceIdProps {
 
 const run: AzureFunction = async function (context: Context, event: Object): Promise<void> {
     context.log(`Event grid trigger function processed an event: ${Util.inspect(event, {showHidden: false, depth: null})}`);
-    const providerIdentitier = "providers/Microsoft.Network/privateDnsZones";
+    const eventIdentifier = "Microsoft.Resources.ResourceWriteSuccess";
+    const operationNameIdentifier = "Microsoft.Network/privateDnsZones/write";
     const aksIdentifier = "azmk8s.io"
     const resourceId: string = event["subject"];
-    const shouldCreateLink = resourceId.includes(providerIdentitier) && resourceId.endsWith(aksIdentifier);
+    const shouldCreateLink = event["eventType"] === eventIdentifier && event["data"]["operationName"] === operationNameIdentifier && resourceId.endsWith(aksIdentifier);
     if (!shouldCreateLink) {
         context.log(`Bailing. Link shouldn't be created for resourceId: ${resourceId}`)
         return;
