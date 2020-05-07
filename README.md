@@ -31,4 +31,5 @@ If you can answer *yes* to the above, and BYO DNS still isn't available for AKS 
 ## IMPORTANT
 
 Even though the function only reacts to events of type *ResourceWriteSuccess* on the private DNS zone resource type, I've found that when applying any filters at all a significant delay is sometimes introduced from action to event, causing the function not to run in time. Sometimes the delay has been hours.
+
 I haven't been able to break it when subscribing to *ALL* events on a given subscription.
