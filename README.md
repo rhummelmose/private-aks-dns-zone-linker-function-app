@@ -26,4 +26,9 @@ If you can answer *yes* to the above, and BYO DNS still isn't available for AKS 
 1. On the function app, add a new application configuration variable: *PRIVATE_AKS_DNS_ZONE_LINKER_TARGET_VNETS* with a value derived from the previous bullet.
 1. Run command *tsc* to compile the function app - requires TypeScript (https://www.typescriptlang.org/#download-links)
 1. Run command *func azure functionapp publish <your-app-name>* to publish the function - requires azure-functions-core-tools (https://github.com/Azure/azure-functions-core-tools)
-1. Subscribe the function to events of type *ResourceWriteSuccess* on the subscriptions relevant
+1. Subscribe the function to all events on the subscriptions relevant
+
+## IMPORTANT
+
+Even though the function only reacts to events of type *ResourceWriteSuccess* on the private DNS zone resource type, I've found that when applying any filters at all a significant delay is sometimes introduced from action to event, causing the function not to run in time. Sometimes the delay has been hours.
+I haven't been able to break it when subscribing to *ALL* events on a given subscription.
